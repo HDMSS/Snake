@@ -10,19 +10,19 @@ namespace CASnake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 1, '$');
-            p1.Draw();
-            Point p2 = new Point(2, 2, '@');
-            p2.Draw();
-            Point p3 = new Point(3, 3, '#');
-            p3.Draw();
-            Point p4 = new Point(4, 4, '&');
-            p4.Draw();
+            Console.SetBufferSize(100,50);
+            HorisontalLine hupLine = new HorisontalLine(5, 70, 5, '#');
+            HorisontalLine hdownLine = new HorisontalLine(5, 70, 35, '#');
+            VerticalLine vleftLine = new VerticalLine(5, 35, 5, '#');
+            VerticalLine vrightLine = new VerticalLine(5, 35, 69, '#');
+            hdownLine.Draw();
+            hupLine.Draw();
+            vrightLine.Draw();
+            vleftLine.Draw();
 
-            HorisontalLine hLine = new HorisontalLine(5, 50, 5, '+');
-            hLine.Draw();
-            VerticalLine vLine = new VerticalLine(5, 30, 5, '+');
-            vLine.Draw();
+            Point p = new Point(15, 15, '*');
+            p.Draw();
+           
       
             Console.ReadLine();
         }
