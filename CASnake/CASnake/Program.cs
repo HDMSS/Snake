@@ -20,8 +20,9 @@ namespace CASnake
             vrightLine.Draw();
             vleftLine.Draw();
 
-            Point p = new Point(15, 15, '*');
-            p.Draw();
+            Point p = new Point(10, 10, '*');
+            Snake snake = new Snake( p, 4, Direction.Right);
+            snake.Draw();
            
       
             Console.ReadLine();
