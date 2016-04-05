@@ -10,16 +10,11 @@ namespace CASnake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point();
-            p1.x = 1;
-            p1.y = 2;
-            p1.sym = '*';
+            Point p3 = new Point(1, 5, '$');
+            p3.Draw();
+            Point p1 = new Point(2, 2, '@');
             p1.Draw();
-            
-            Point p2 = new Point();
-            p2.x = 5;
-            p2.y = 5;
-            p2.sym = '%';
+            Point p2 = new Point(3, 3, '#');
             p2.Draw();
 
            
