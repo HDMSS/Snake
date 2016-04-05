@@ -6,27 +6,19 @@ using System.Threading.Tasks;
 
 namespace CASnake
 {
-    class HorisontalLine
+    class HorisontalLine : Figure
     {
-        List<Point> horisontalPoints;
 
         public HorisontalLine(int xLeft, int xRight, int y, char sym)
         {
-           horisontalPoints = new List<Point>();
+           pList = new List<Point>();
             for (int x = xLeft; x < xRight; x++)
             {
                 Point p = new Point(x, y, sym);
-                horisontalPoints.Add(p);
+                pList.Add(p);
             }
 
         }
 
-        public void Draw()
-        {
-            foreach (Point p in horisontalPoints)
-            {
-                p.Draw();
-            }
-        }
     }
 }

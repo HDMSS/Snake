@@ -8,5 +8,14 @@ namespace CASnake
 {
     class Figure
     {
+        public List<Point> pList;
+        public void Draw()
+        {
+            foreach (Point p in pList)
+            {
+                p.Draw();
+            }
+          
+        }
     }
 }
