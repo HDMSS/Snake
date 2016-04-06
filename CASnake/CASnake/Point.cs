@@ -32,6 +32,7 @@ namespace CASnake
             sym = p.sym;
         }
 
+        
         public void Move(int offset, Direction direction)
         {
             if (direction == Direction.Right)
@@ -64,6 +65,12 @@ namespace CASnake
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
             
+        }
+
+        public void Clear()
+        {
+            sym = ' ';
+            Draw();
         }
     }
     
