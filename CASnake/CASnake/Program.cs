@@ -12,7 +12,7 @@ namespace CASnake
     {
         static void Main(string[] args)
         {
-            Console.SetBufferSize(100,50);
+            Console.SetBufferSize(80,40);
             HorisontalLine hupLine = new HorisontalLine(5, 70, 5, '#');
             HorisontalLine hdownLine = new HorisontalLine(5, 70, 35, '#');
             VerticalLine vleftLine = new VerticalLine(5, 35, 5, '#');
@@ -26,18 +26,40 @@ namespace CASnake
             Snake snake = new Snake( p, 4, Direction.Right);
             snake.Draw();
 
+            //while (true)
+            //{
+            //    if (Console.KeyAvailable)
+            //    {
+            //        ConsoleKeyInfo key = Console.ReadKey();
+            //        snake.HendleKey(key.Key);
+            //    }
+            //    Thread.Sleep(100);
+            //    snake.Move();
+            //}
+            FoodKreator foodKreator = new FoodKreator(50, 30, '$');
+            Point food = foodKreator.CreateFood();
+            food.Draw();
             while (true)
             {
+                if (snake.Eat(food))
+                {
+                    food = foodKreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.Move();
+                }
+                Thread.Sleep(100);
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HendleKey(key.Key);
                 }
-                Thread.Sleep(100);
-                snake.Move();
+
             }
-          
+
         }
 
-     }
+    }
 }
