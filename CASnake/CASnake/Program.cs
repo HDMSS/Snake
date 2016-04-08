@@ -25,12 +25,18 @@ namespace CASnake
             Point p = new Point(10, 10, '*');
             Snake snake = new Snake( p, 4, Direction.Right);
             snake.Draw();
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Console.ReadLine();
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HendleKey(key.Key);
+                }
+                Thread.Sleep(100);
+                snake.Move();
+            }
+          
         }
 
      }
