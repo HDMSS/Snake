@@ -13,34 +13,24 @@ namespace CASnake
         static void Main(string[] args)
         {
             Console.SetBufferSize(80,40);
-            HorisontalLine hupLine = new HorisontalLine(5, 70, 5, '#');
-            HorisontalLine hdownLine = new HorisontalLine(5, 70, 35, '#');
-            VerticalLine vleftLine = new VerticalLine(5, 35, 5, '#');
-            VerticalLine vrightLine = new VerticalLine(5, 35, 69, '#');
-            hdownLine.Draw();
-            hupLine.Draw();
-            vrightLine.Draw();
-            vleftLine.Draw();
-
+            Walls walls = new Walls(70, 35);
+            walls.Draw();
+            
             Point p = new Point(10, 10, '*');
             Snake snake = new Snake( p, 4, Direction.Right);
             snake.Draw();
-
-            //while (true)
-            //{
-            //    if (Console.KeyAvailable)
-            //    {
-            //        ConsoleKeyInfo key = Console.ReadKey();
-            //        snake.HendleKey(key.Key);
-            //    }
-            //    Thread.Sleep(100);
-            //    snake.Move();
-            //}
-            FoodKreator foodKreator = new FoodKreator(50, 30, '$');
+            
+            FoodKreator foodKreator = new FoodKreator(50, 30, '@');
             Point food = foodKreator.CreateFood();
             food.Draw();
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    Console.WriteLine("you are loser");
+                    Console.ReadLine();
+                    break;
+                }
                 if (snake.Eat(food))
                 {
                     food = foodKreator.CreateFood();
@@ -50,12 +40,13 @@ namespace CASnake
                 {
                     snake.Move();
                 }
-                Thread.Sleep(100);
+                Thread.Sleep(150);
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HendleKey(key.Key);
                 }
+               
 
             }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,11 @@ namespace CASnake
             
         }
 
+        //public SnakeBody(Point tail, Point head)
+        //{
+        //    SnakeBody = 
+        //}
+
         internal void Move()
         {
             Point tail = pList.First();
@@ -43,12 +49,29 @@ namespace CASnake
             return nextPoint;
         }
 
+        //internal void Body()
+        //{
+            
+
+        //}
+
+        internal bool IsHitTail()
+        {
+            var head = pList.Last();
+            for (int i = 0; i < pList.Count - 2; i++)
+            {
+                if (head.IsHit(pList[i]))
+                    return true;
+            }
+            return false;
+        }
+        
         public void HendleKey(ConsoleKey key)
         {
-            if (key == ConsoleKey.LeftArrow) direction = Direction.Left;
-            else if (key == ConsoleKey.RightArrow) direction = Direction.Right;
-            else if (key == ConsoleKey.DownArrow) direction = Direction.Down;
-            else if (key == ConsoleKey.UpArrow) direction = Direction.Up;
+            if (key == ConsoleKey.LeftArrow && direction != Direction.Right) direction = Direction.Left;
+            else if (key == ConsoleKey.RightArrow && direction != Direction.Left) direction = Direction.Right;
+            else if (key == ConsoleKey.DownArrow && direction != Direction.Up) direction = Direction.Down;
+            else if (key == ConsoleKey.UpArrow && direction != Direction.Down) direction = Direction.Up;
        
         }
 
@@ -66,5 +89,7 @@ namespace CASnake
                 return false;
             }
         }
+
+       
     }
 }

@@ -22,9 +22,10 @@ namespace CASnake
 
         public Point CreateFood()
         {
-            int x = random.Next(10, mapWidht - 10);
-            int y = random.Next(10, mapHeight - 10);
+            int x = random.Next(5, mapWidht - 2);
+            int y = random.Next(5, mapHeight - 2);
             return new Point(x, y, sym);
+            
         }
     }
 }
